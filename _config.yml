@@ -1,0 +1,12 @@
+# site settings
+title: Jeff Buckley when raining | Jeremias Menichelli
+author: Jeremias Menichelli
+description: "Web app that asks for your location and if it is not sunny it plays a random Jeff Buckley video."
+url: "http://jeremenichelli.github.io/jeff-buckley-when-raining"
+# change baseurl for LAB_NAME
+baseurl: /jeff-buckley-when-raining
+
+# build settings
+port: 5000
+highlighter: pygments
+markdown: redcarpet

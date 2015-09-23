@@ -1,0 +1,50 @@
+// common resources
+@import '__mixins.less';
+@import '__variables.less';
+
+/* --- NON CRITICAL STYLES --- */
+strong {
+    font-weight: 400;
+}
+
+a {
+    color: @main-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+}
+
+h2 {
+
+    + h3 {
+        margin-top: 20px;
+    }
+}
+
+h3 {
+
+    + h4 {
+        margin-top: 20px;
+    }
+}
+
+#media {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* --- NON CRITICAL MOBILE STYLES --- */
+@media screen and (max-width: 769px) {
+
+}
