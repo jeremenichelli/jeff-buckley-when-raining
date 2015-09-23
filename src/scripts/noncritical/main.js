@@ -65,6 +65,7 @@
                 msge = msge + 'So, maybe it is a good time to hear a nice song...';
                 setMessage(msge);
                 // set video
+                media.classList.add('visible');
                 media.innerHTML = video;
             }
         } else {

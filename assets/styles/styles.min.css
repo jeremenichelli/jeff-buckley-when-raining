@@ -1,1 +1,1 @@
-strong{font-weight:400}a{color:#673ab7}h1,h2,h3,h4,h5,h6{clear:both}h2+h3,h3+h4{margin-top:20px}#media{position:relative;padding-bottom:56.25%;padding-top:25px;height:0}iframe{position:absolute;top:0;left:0;height:100%;width:100%}
+strong{font-weight:400}a{color:#673ab7}h1,h2,h3,h4,h5,h6{clear:both}h2+h3,h3+h4{margin-top:20px}#media{position:relative;height:0;opacity:0;-webkit-transition:all .45s ease;transition:all .45s ease}#media.visible{opacity:1;padding-bottom:56.25%;padding-top:25px}iframe{position:absolute;top:0;left:0;height:100%;width:100%}

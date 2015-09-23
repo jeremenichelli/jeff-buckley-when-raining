@@ -31,9 +31,15 @@ h3 {
 
 #media {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
     height: 0;
+    opacity: 0;
+    transition: all .45s ease;
+
+    &.visible {
+        opacity: 1;
+        padding-bottom: 56.25%; /* 16:9 */
+        padding-top: 25px;
+    }
 }
 
 iframe {
