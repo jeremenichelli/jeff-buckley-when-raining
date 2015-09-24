@@ -1,14 +1,14 @@
 {
-  "name": "jeremenichelli.github.io",
-  "title": "Jekyll site for jeremenichelli.github.io",
-  "url": "http://jeremenichelli.github.io",
+  "name": "jeff-buckley-when-raining",
+  "title": "Jeff Buckley when raining, please!",
+  "url": "http://jeremenichelli.github.io/jeff-buckley-when-raining",
   "author": "Jeremias Menichelli",
   "copyright": "2015",
   "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/jeremenichelli/jeremenichelli.github.io.git"
+    "url": "git+ssh://git@github.com/jeremenichelli/jeff-buckley-when-raining.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -24,10 +24,10 @@
     "gulp-util": "^3.0.6"
   },
   "bugs": {
-    "url": "https://github.com/jeremenichelli/jeremenichelli.github.io/issues"
+    "url": "https://github.com/jeremenichelli/jeff-buckley-when-raining/issues"
   },
-  "homepage": "https://github.com/jeremenichelli/jeremenichelli.github.io#readme",
-  "description": "Personal site and blog",
+  "homepage": "https://github.com/jeremenichelli/jeff-buckley-when-raining#readme",
+  "description": "Web app that asks for your location and if it is not sunny it plays a random Jeff Buckley video.",
   "main": "index.html",
   "scripts": {
     "build": "gulp && jekyll build"

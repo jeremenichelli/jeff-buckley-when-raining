@@ -32,6 +32,7 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 18px;
     font-weight: 300;
+    text-align: center;
 
     text-rendering: optimizeLegibility;
     font-feature-settings: "kern" 1;
@@ -70,6 +71,28 @@ h2 {
 
     h2 {
         margin-top: 0;
+    }
+}
+
+#start {
+    .button();
+    display: block;
+    margin: 20px auto 0;
+    max-width: 120px;
+    min-height: 48px;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+#message {
+    display: none;
+    font-size: 24px;
+    line-height: 48px;
+
+    &.show {
+        display: block;
     }
 }
 
@@ -129,6 +152,7 @@ em {
 }
 
 .back--img {
+    max-width: none;
     min-height: 100%;
     min-width: 100%;
     top: 0px;
@@ -143,10 +167,43 @@ em {
     }
 }
 
-blockquote {
-    font-style: italic;
-    font-weight: 400;
-    text-transform: uppercase;
+/* --- LOGO STYLES --- */
+.logo {
+    color: @text-color--dark;
+    display: block;
+    margin: 0 auto;
+    max-width: 304px;
+    // general logo font size to
+    // rule all metrics inside
+    font-size: 38px;
+}
+
+.logo--name {
+    display: block;
+    line-height: 1em;
+    letter-spacing: -0.01em;
+    margin: -.25em 0 0 -.5em;
+    max-width: 8em;
+
+    &.error {
+        margin: 0;
+        width: auto;
+
+        + .logo--job {
+            margin: 0;
+            text-align: left;
+        }
+    }
+}
+
+.logo--job {
+    display: block;
+    font-size: .45em;
+    font-weight: 300;
+    line-height: 1em;
+    margin: -.45em 0 0;
+    text-align: left;
+    text-transform: lowercase;
 }
 
 /* --- HEADER STYLES --- */

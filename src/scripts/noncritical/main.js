@@ -9,8 +9,40 @@
 
     var message = _doc.getElementById('message'),
         media = _doc.getElementById('media'),
-        video = '<iframe width="854" height="480" src="https://www.youtube.com/embed/nrMwgTc69y4?autoplay=1"' +
-            'frameborder="0" allowfullscreen></iframe>';
+        video = _doc.createElement('iframe'),
+        songs = [
+            {
+                title: 'Everybody Here Wants You',
+                slug: 'nrMwgTc69y4'
+            },
+            {
+                title: 'So Real',
+                slug: 'EcaxrqhUJ4c'
+            },
+            {
+                title: 'Grace',
+                slug: 'A3adFWKE9JE'
+            },
+            {
+                title: 'Forget Her',
+                slug: 'HO0svGjVEP8'
+            },
+            {
+                title: 'Last Goodbye',
+                slug: '3MMXjunSx80'
+            }
+        ];
+
+    video.width = 854;
+    video.height = 480;
+    video.setAttribute('frameborder', '0');
+    video.setAttribute('allowfullscreen', 'true');
+    
+    // animate padding when iframe is loaded
+    video.onload = function() {
+        _win.scrollTo(0, message.getBoundingClientRect().y);
+        media.classList.add('visible');
+    };
 
     // set jabiru configuration
     jabiru.query('&callback').toGlobal();
@@ -24,6 +56,13 @@
         if (el.innerText) {
             el.innerText = '';
         }
+    }
+
+    // get a random song
+    function getSong() {
+        var index = Math.floor(Math.random() * songs.length);
+
+        return songs[index];
     }
 
     // set message
@@ -54,19 +93,24 @@
 
     function resolveData(data) {
         if (data.cod === 200) {
-            var msge = 'Apparently you are in <strong>' + data.name + '</strong> ' +
-                ' and the weather is <strong>' + data.weather[0].description + '</strong>.<br><br>';
+            var song,
+                msge = 'Apparently you are in <strong>' + data.name + '</strong> ' +
+                    ' and the weather is <strong>' + data.weather[0].description +
+                    '</strong>.<br>';
 
             if (checkWeather(data.weather[0].id)) {
                 msge = msge + 'So, maybe you can go outside and listen to Jeff Buckley later. Have a nice day!';
                 setMessage(msge);
                 return;
             } else {
-                msge = msge + 'So, maybe it is a good time to hear a nice song...';
+                song = getSong();
+
+                msge = msge + 'So, maybe it is a good time to listen to <strong>' + song.title + '</strong>...';
                 setMessage(msge);
+                
                 // set video
-                media.classList.add('visible');
-                media.innerHTML = video;
+                media.appendChild(video);
+                video.src = 'https://www.youtube.com/embed/' + song.slug + '?autoplay=1';
             }
         } else {
             setMessage('There was an error fetching the weather data. Please reload the page or try again later.');
@@ -101,7 +145,14 @@
 
     _win.onload = function() {
         loadBackgroundImage();
-        getPosition();
+        
+        var startBtn = _doc.getElementById('start');
+
+        startBtn.addEventListener('click', function() {
+            startBtn.classList.add('hidden');
+            message.classList.add('show');
+            getPosition();
+        }, false);
     };
 
 })(window, document);
