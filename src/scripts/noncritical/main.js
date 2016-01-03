@@ -40,8 +40,10 @@
     
     // animate padding when iframe is loaded
     video.onload = function() {
-        _win.scrollTo(0, message.getBoundingClientRect().y);
         media.classList.add('visible');
+        setTimeout(function() {
+            _win.scrollTo(0, message.getBoundingClientRect().y - 5);
+        }, 450)
     };
 
     // set jabiru configuration
@@ -80,7 +82,8 @@
 
             jabiru.get({
                 url: 'http://api.openweathermap.org/data/2.5/weather?' +
-                    'lat=' + p.coords.latitude + '&lon=' + p.coords.longitude + '&units=metric',
+                    'lat=' + p.coords.latitude + '&lon=' + p.coords.longitude + '&units=metric' +
+                    '&APPID=8a9fddf3938ff20a939357ee9aaad67c',
                 success: resolveData
             });
         }, function(e) {
@@ -98,7 +101,7 @@
                     ' and the weather is <strong>' + data.weather[0].description +
                     '</strong>.<br>';
 
-            if (checkWeather(data.weather[0].id)) {
+            if (isBadWeather(data.weather[0].id)) {
                 msge = msge + 'So, maybe you can go outside and listen to Jeff Buckley later. Have a nice day!';
                 setMessage(msge);
                 return;
@@ -110,19 +113,21 @@
                 
                 // set video
                 media.appendChild(video);
-                video.src = 'https://www.youtube.com/embed/' + song.slug + '?autoplay=1';
+                video.src = 'https://www.youtube.com/embed/' + song.slug +
+                    '?autoplay=1&rel=0&amp;controls=0&amp;showinfo=0';
             }
         } else {
             setMessage('There was an error fetching the weather data. Please reload the page or try again later.');
         }
     }
 
-    function checkWeather(code) {
+    function isBadWeather(code) {
         var badWeatherCodes = [
             200, 201, 202, 210, 211, 212, 221, 230, 231, 232,
             300, 301, 302, 310, 311, 312, 313, 314, 321,
             500, 501, 502, 503, 504, 511, 520, 521, 522, 531,
-            600, 601, 602, 611, 612, 615, 616, 620, 621, 622 ];
+            600, 601, 602, 611, 612, 615, 616, 620, 621, 622,
+            804 ];
 
         if (badWeatherCodes.indexOf(code) !== -1) {
             return false;
@@ -140,7 +145,7 @@
             this.onload = null;
         };
 
-        backgroundImg.src = backgroundImg.getAttribute('data-src');
+        backgroundImg.src = backgroundImg.dataset.src;
     }
 
     _win.onload = function() {
